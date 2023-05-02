@@ -16,6 +16,15 @@ position = Vector2(393, 185)
 position = Vector2(640, 650)
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+[node name="FloorCollision" type="CollisionShape2D" parent="Floor"]
 position = Vector2(0, 53.5)
 shape = SubResource("RectangleShape2D_w2xnh")
+
+[node name="FloorArea" type="Area2D" parent="Floor"]
+
+[node name="FloorAreaCollision" type="CollisionShape2D" parent="Floor/FloorArea"]
+position = Vector2(0, 53.5)
+shape = SubResource("RectangleShape2D_w2xnh")
+
+[connection signal="body_entered" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_entered"]
+[connection signal="body_exited" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_exited"]

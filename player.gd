@@ -5,7 +5,7 @@ var flying = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$BunnySprite.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,3 +23,12 @@ func _physics_process(delta):
 		apply_central_force(Vector2(0, fly_speed))
 	if Input.is_action_just_released("fly"):
 		flying = false
+
+func _on_floor_area_body_entered(body):
+	if(body.name == "Player"):
+		$BunnySprite.play()
+
+
+func _on_floor_area_body_exited(body):
+	if(body.name == "Player"):
+		$BunnySprite.stop()

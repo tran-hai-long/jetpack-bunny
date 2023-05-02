@@ -25,6 +25,8 @@ radius = 60.0
 height = 210.0
 
 [node name="Player" type="RigidBody2D"]
+max_contacts_reported = 1
+contact_monitor = true
 script = ExtResource("1_elxe5")
 metadata/_edit_group_ = true
 
