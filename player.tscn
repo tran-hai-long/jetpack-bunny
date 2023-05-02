@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c86nx8wi22g1u"]
+[gd_scene load_steps=8 format=3 uid="uid://c86nx8wi22g1u"]
 
 [ext_resource type="Texture2D" uid="uid://bjxq2488gf670" path="res://assets/sprites/player/jetpack.png" id="1_5jai6"]
+[ext_resource type="Script" path="res://player.gd" id="1_elxe5"]
 [ext_resource type="Texture2D" uid="uid://dn0wxg01awndn" path="res://assets/sprites/player/bunny_still.png" id="2_khhm1"]
 [ext_resource type="Texture2D" uid="uid://bqftudssy1gum" path="res://assets/sprites/player/bunny_walk.png" id="3_vy26c"]
 [ext_resource type="Texture2D" uid="uid://ev6h0toohpfa" path="res://assets/sprites/player/flame.png" id="4_vqry4"]
@@ -24,6 +25,7 @@ radius = 60.0
 height = 210.0
 
 [node name="Player" type="RigidBody2D"]
+script = ExtResource("1_elxe5")
 metadata/_edit_group_ = true
 
 [node name="JetpackSprite" type="Sprite2D" parent="."]
