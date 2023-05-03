@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scroll_offset += Vector2(-1, 0)
+	scroll_offset += Vector2(-60, 0) * delta
 	# 3072 = the point at which background patterns repeat
-	if scroll_offset == Vector2(-3072, 0):
+	if scroll_offset.x <= -3072:
 		scroll_offset = Vector2(0, 0)

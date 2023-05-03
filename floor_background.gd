@@ -8,6 +8,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	scroll_offset += Vector2(-2, 0)
-	if scroll_offset == Vector2(-64, 0):
+	scroll_offset += Vector2(-120, 0) * delta
+	if scroll_offset.x <= -64:
 		scroll_offset = Vector2(0, 0)
