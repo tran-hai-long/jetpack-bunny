@@ -21,16 +21,16 @@ script = ExtResource("1_gfx0i")
 script = ExtResource("3_6l6qq")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(461, 159)
 motion_scale = Vector2(0.5, 0.5)
 metadata/_edit_group_ = true
 
 [node name="BackgroundSprite" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 texture_repeat = 2
+position = Vector2(1145, 110)
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("3_tgabd")
 region_enabled = true
-region_rect = Rect2(0, 0, 12800, 1440)
+region_rect = Rect2(0, 0, 6000, 1440)
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(412, 95)
@@ -39,10 +39,10 @@ metadata/_edit_group_ = true
 
 [node name="BackgroundSprite2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 texture_repeat = 2
-position = Vector2(27, 99)
+position = Vector2(1769.33, 56)
 texture = ExtResource("4_1i733")
 region_enabled = true
-region_rect = Rect2(0, 0, 12800, 1800)
+region_rect = Rect2(0, 0, 9000, 1800)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(640, 650)
