@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c77yno2kcxgn7"]
+[gd_scene load_steps=10 format=3 uid="uid://c77yno2kcxgn7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gfx0i"]
 [ext_resource type="PackedScene" uid="uid://c86nx8wi22g1u" path="res://player.tscn" id="2_3p5ja"]
@@ -10,6 +10,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2xnh"]
 size = Vector2(1286, 127)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_atebk"]
+size = Vector2(1309, 26)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_gfx0i")
@@ -69,6 +72,20 @@ region_rect = Rect2(0, 0, 12800, 90)
 
 [node name="Player" parent="." instance=ExtResource("2_3p5ja")]
 position = Vector2(393, 185)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(640, 0)
+metadata/_edit_group_ = true
+
+[node name="CeilingCollision" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(1.5, 3)
+shape = SubResource("RectangleShape2D_atebk")
+
+[node name="CeilingArea" type="Area2D" parent="Ceiling"]
+
+[node name="CeilingAreaCollision" type="CollisionShape2D" parent="Ceiling/CeilingArea"]
+position = Vector2(1.5, 3)
+shape = SubResource("RectangleShape2D_atebk")
 
 [connection signal="body_entered" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_entered"]
 [connection signal="body_exited" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_exited"]
