@@ -6,10 +6,10 @@
 [ext_resource type="Script" path="res://parallax_background.gd" id="3_6l6qq"]
 [ext_resource type="Texture2D" uid="uid://bovw8c44u53st" path="res://assets/backgrounds/bg_layer3.png" id="3_tgabd"]
 [ext_resource type="Texture2D" uid="uid://cykkxmuvgvw5s" path="res://assets/backgrounds/bg_layer4.png" id="4_1i733"]
-[ext_resource type="Texture2D" uid="uid://w6prskqxhhf4" path="res://assets/backgrounds/ground_grass.png" id="4_mq5je"]
+[ext_resource type="Texture2D" uid="uid://4djb28oq566f" path="res://assets/backgrounds/ground_yellow.png" id="6_grkfx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2xnh"]
-size = Vector2(1286, 127)
+size = Vector2(1286, 72.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_atebk"]
 size = Vector2(1309, 26)
@@ -49,13 +49,13 @@ position = Vector2(640, 650)
 metadata/_edit_group_ = true
 
 [node name="FloorCollision" type="CollisionShape2D" parent="Floor"]
-position = Vector2(0, 53.5)
+position = Vector2(1, 53)
 shape = SubResource("RectangleShape2D_w2xnh")
 
 [node name="FloorArea" type="Area2D" parent="Floor"]
 
 [node name="FloorAreaCollision" type="CollisionShape2D" parent="Floor/FloorArea"]
-position = Vector2(0, 53.5)
+position = Vector2(0, 53)
 shape = SubResource("RectangleShape2D_w2xnh")
 
 [node name="FloorBackground" type="ParallaxBackground" parent="Floor"]
@@ -65,10 +65,10 @@ script = ExtResource("3_0nl7t")
 
 [node name="FloorSprite" type="Sprite2D" parent="Floor/FloorBackground/FloorLayer"]
 texture_repeat = 2
-position = Vector2(635, 684)
-texture = ExtResource("4_mq5je")
+position = Vector2(550, 696)
+texture = ExtResource("6_grkfx")
 region_enabled = true
-region_rect = Rect2(0, 0, 12800, 90)
+region_rect = Rect2(0, 0, 2000, 60)
 
 [node name="Player" parent="." instance=ExtResource("2_3p5ja")]
 position = Vector2(393, 185)
