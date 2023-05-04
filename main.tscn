@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c77yno2kcxgn7"]
+[gd_scene load_steps=11 format=3 uid="uid://c77yno2kcxgn7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gfx0i"]
 [ext_resource type="PackedScene" uid="uid://c86nx8wi22g1u" path="res://player.tscn" id="2_3p5ja"]
@@ -8,10 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cykkxmuvgvw5s" path="res://assets/backgrounds/bg_layer4.png" id="4_1i733"]
 [ext_resource type="Texture2D" uid="uid://4djb28oq566f" path="res://assets/backgrounds/ground_yellow.png" id="6_grkfx"]
 [ext_resource type="Script" path="res://ceiling_area.gd" id="8_6kwyd"]
-[ext_resource type="PackedScene" uid="uid://c86kdfl1qjwur" path="res://obstacles/flying_enemy.tscn" id="9_07r4v"]
-[ext_resource type="PackedScene" uid="uid://bsvwdch203y7o" path="res://obstacles/spike_points_down.tscn" id="10_nrler"]
-[ext_resource type="PackedScene" uid="uid://dmxouir7xqyx5" path="res://obstacles/spike_points_up.tscn" id="11_c2tdk"]
-[ext_resource type="PackedScene" uid="uid://b4p3apgdwb0es" path="res://obstacles/standing_enemy.tscn" id="12_k4yxw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2xnh"]
 size = Vector2(1286, 72.5)
@@ -51,7 +47,6 @@ region_rect = Rect2(0, 0, 9000, 1800)
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(640, 650)
-metadata/_edit_group_ = true
 
 [node name="FloorCollision" type="CollisionShape2D" parent="Floor"]
 position = Vector2(1, 53)
@@ -80,7 +75,6 @@ position = Vector2(145, 490)
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(640, 0)
-metadata/_edit_group_ = true
 
 [node name="CeilingCollision" type="CollisionShape2D" parent="Ceiling"]
 position = Vector2(1.5, 3)
@@ -92,18 +86,6 @@ script = ExtResource("8_6kwyd")
 [node name="CeilingAreaCollision" type="CollisionShape2D" parent="Ceiling/CeilingArea"]
 position = Vector2(1.5, 3)
 shape = SubResource("RectangleShape2D_atebk")
-
-[node name="PlaceholderFlyingEnemy" parent="." instance=ExtResource("9_07r4v")]
-position = Vector2(689, -491)
-
-[node name="PlaceholderSpikePointsDown" parent="." instance=ExtResource("10_nrler")]
-position = Vector2(961, -452)
-
-[node name="PlaceholderSpikePointsUp" parent="." instance=ExtResource("11_c2tdk")]
-position = Vector2(505, -494)
-
-[node name="PlaceholderStandingEnemy" parent="." instance=ExtResource("12_k4yxw")]
-position = Vector2(272, -544)
 
 [connection signal="body_entered" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_entered"]
 [connection signal="body_exited" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_exited"]
