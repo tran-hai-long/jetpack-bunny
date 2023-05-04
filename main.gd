@@ -26,10 +26,10 @@ func _process(delta):
 		var random_float = randf()
 		if random_float < 0.6:
 			obstacle = flying_enemy_scene.instantiate()
-			obstacle.position.y = randi_range($Ceiling.position.y, $Floor.position.y)
+			obstacle.position.y = randi_range($Ceiling.position.y, $Floor.position.y - obstacle.get_node("FlyingEnemySprite").get_rect().size.y)
 		elif random_float < 0.8:
 			obstacle = spike_up_scene.instantiate()
-			obstacle.position.y = $Floor.position.y
+			obstacle.position.y = $Floor.position.y - obstacle.get_node("SpikePointsUpSprite").get_rect().size.y
 		else:
 			obstacle = spike_down_scene.instantiate()
 			obstacle.position.y = $Ceiling.position.y
