@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://bsvwdch203y7o"]
+
+[node name="spike_points_down" type="Node2D"]

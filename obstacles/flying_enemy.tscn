@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://c86kdfl1qjwur"]
+
+[node name="flying_enemy" type="Node2D"]
