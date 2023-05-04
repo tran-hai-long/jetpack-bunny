@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://obstacles/spike_points_down.gd" id="1_v8gqn"]
 
 [node name="SpikePointsDown" type="Area2D" groups=["obstacles"]]
+scale = Vector2(2, 2)
 script = ExtResource("1_v8gqn")
 metadata/_edit_group_ = true
 
