@@ -89,6 +89,18 @@ script = ExtResource("8_6kwyd")
 position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_atebk")
 
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="HUD"]
+offset_right = 150.0
+offset_bottom = 65.0
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+
+[node name="ScoreTimer" type="Timer" parent="HUD"]
+wait_time = 0.2
+
 [connection signal="body_entered" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_entered"]
 [connection signal="body_exited" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_exited"]
 [connection signal="player_collided" from="Ceiling/CeilingArea" to="Player" method="_on_ceiling_area_player_collided"]
+[connection signal="timeout" from="HUD/ScoreTimer" to="." method="_on_score_timer_timeout"]
