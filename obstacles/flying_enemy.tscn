@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_spett"]
 size = Vector2(100, 139)
 
-[node name="FlyingEnemy" type="Area2D"]
+[node name="FlyingEnemy" type="Area2D" groups=["obstacles"]]
 metadata/_edit_group_ = true
 
 [node name="FlyingEnemySprite" type="Sprite2D" parent="."]

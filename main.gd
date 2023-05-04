@@ -5,6 +5,7 @@ var max_interval = 2
 var interval = 1.5
 var max_distance_up
 var max_distance_down
+var up_or_down = -1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +14,18 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	interval -= delta
+	if interval <= 0:
+		calculate_max_distance()
+		up_or_down = randi_range(0, 1)
+		if up_or_down == 0:
+			# TODO: generate obstacles so that player can go down
+			pass
+		elif up_or_down == 1:
+			# TODO: generate obstacles so that player can go up
+			pass
+		up_or_down = -1
+		generate_interval()
 
 func _physics_process(delta):
 	pass

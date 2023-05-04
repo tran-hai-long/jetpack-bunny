@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bln4gmvjphef1" path="res://assets/sprites/obstacles/spike_points_down.png" id="1_swx0w"]
 
-[node name="SpikePointsDown" type="Area2D"]
+[node name="SpikePointsDown" type="Area2D" groups=["obstacles"]]
 metadata/_edit_group_ = true
 
 [node name="SpikePointsDownSprite" type="Sprite2D" parent="."]

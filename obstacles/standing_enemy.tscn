@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://e3565lte8dhd" path="res://assets/sprites/obstacles/standing_enemy.png" id="1_tvvb6"]
 
-[node name="StandingEnemy" type="Area2D"]
+[node name="StandingEnemy" type="Area2D" groups=["obstacles"]]
 metadata/_edit_group_ = true
 
 [node name="StandingEnemySprite" type="Sprite2D" parent="."]
