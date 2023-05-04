@@ -11,6 +11,7 @@ enum {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BunnySprite.stop()
+	$FlameSprite.hide()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,21 +21,18 @@ func _process(delta):
 func _physics_process(delta):
 	match state:
 		STATE_RUNNING:
-			$FlameSprite.hide()
 			if Input.is_action_pressed("fly"):
 				state = STATE_FLYING
 				set_linear_velocity(Vector2(0, 0))
 				apply_central_force(Vector2(0, fly_speed))
 				$FlameSprite.show()
 		STATE_FLYING:
-			$FlameSprite.show()
 			if Input.is_action_pressed("fly"):
 				apply_central_force(Vector2(0, fly_speed))
 			else:
 				state = STATE_FALLING
 				$FlameSprite.hide()
 		STATE_FALLING:
-			$FlameSprite.hide()
 			if Input.is_action_pressed("fly"):
 				state = STATE_FLYING
 				set_linear_velocity(Vector2(0, 0))
