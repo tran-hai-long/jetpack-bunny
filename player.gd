@@ -40,6 +40,7 @@ func _physics_process(delta):
 				$FlameSprite.show()
 			elif linear_velocity == Vector2(0, 0):
 				state = STATE_RUNNING
+	$FlameSprite.scale.y = linear_velocity.y / fly_speed
 
 
 func _on_floor_area_body_entered(body):
