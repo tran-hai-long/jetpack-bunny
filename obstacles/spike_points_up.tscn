@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bqyjyfwx0vtfj" path="res://assets/sprites/obstacles/spike_points_up.png" id="1_ja0qq"]
 
 [node name="SpikePointsUp" type="Area2D"]
+metadata/_edit_group_ = true
 
 [node name="SpikePointsUpSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_ja0qq")

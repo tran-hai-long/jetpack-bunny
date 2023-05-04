@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://c86kdfl1qjwur"]
+[gd_scene load_steps=3 format=3 uid="uid://c86kdfl1qjwur"]
 
-[node name="flying_enemy" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://68ymr0jd4euv" path="res://assets/sprites/obstacles/flying_enemy.png" id="1_w2lp1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_spett"]
+size = Vector2(100, 139)
+
+[node name="FlyingEnemy" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="FlyingEnemySprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_w2lp1")
+
+[node name="FlyingEnemyCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_spett")
