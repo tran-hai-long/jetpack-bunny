@@ -1,8 +1,13 @@
 extends RigidBody2D
 
 @export var fly_speed = -1500
-var flying = false
 var ceiling_overlapping_bodies
+var state = STATE_FALLING
+enum {
+	STATE_RUNNING,
+	STATE_FLYING,
+	STATE_FALLING
+}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BunnySprite.stop()
@@ -10,19 +15,34 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if flying:
-		$FlameSprite.show()
-	else:
-		$FlameSprite.hide()
+	pass
 
 func _physics_process(delta):
-	if Input.is_action_pressed("fly"):
-		if not flying:
-			flying = true
-			set_linear_velocity(Vector2(0, 0))
-		apply_central_force(Vector2(0, fly_speed))
-	if Input.is_action_just_released("fly"):
-		flying = false
+	match state:
+		STATE_RUNNING:
+			$FlameSprite.hide()
+			if Input.is_action_pressed("fly"):
+				state = STATE_FLYING
+				set_linear_velocity(Vector2(0, 0))
+				apply_central_force(Vector2(0, fly_speed))
+				$FlameSprite.show()
+		STATE_FLYING:
+			$FlameSprite.show()
+			if Input.is_action_pressed("fly"):
+				apply_central_force(Vector2(0, fly_speed))
+			else:
+				state = STATE_FALLING
+				$FlameSprite.hide()
+		STATE_FALLING:
+			$FlameSprite.hide()
+			if Input.is_action_pressed("fly"):
+				state = STATE_FLYING
+				set_linear_velocity(Vector2(0, 0))
+				apply_central_force(Vector2(0, fly_speed))
+				$FlameSprite.show()
+			elif linear_velocity == Vector2(0, 0):
+				state = STATE_RUNNING
+
 
 func _on_floor_area_body_entered(body):
 	if(body.name == "Player"):
