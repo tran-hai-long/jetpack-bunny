@@ -13,24 +13,29 @@ var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$HUD/ScoreTimer.start()
 	screen_size = get_viewport_rect().size
+	$HUD/Score.hide()
+	get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	score += roundi(delta * 100)
 	interval -= delta
 	if interval <= 0:
 		generate_interval()
 		generate_obstacle()
-	score += roundi(delta * 100)
 
 
 func _physics_process(delta):
 	pass
 
 func _on_game_over():
+	var leftover_obstacles = get_tree().get_nodes_in_group("obstacles")
+	for item in leftover_obstacles:
+		item.queue_free()
 	get_tree().paused = true
+	$HUD/StartButton.show()
 
 func generate_interval():
 	interval = randf_range(min_interval, max_interval)
@@ -59,3 +64,12 @@ func generate_obstacle():
 
 func _on_score_timer_timeout():
 	$HUD/Score.text = "Score: " + str(score)
+
+
+func _on_start_button_pressed():
+	get_tree().paused = false
+	score = 0
+	$HUD/ScoreTimer.start()
+	$HUD/StartButton.hide()
+	$HUD/GameTitle.hide()
+	$HUD/Score.show()
