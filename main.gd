@@ -35,6 +35,7 @@ func _process(delta):
 			obstacle.position.y = $Ceiling.position.y
 		obstacle.position.x = screen_size.x
 		add_child(obstacle)
+		obstacle.game_over.connect(_on_game_over)
 		#calculate_max_distance()
 		#up_or_down = randi_range(0, 1)
 #		if up_or_down == 0:
@@ -54,6 +55,8 @@ func _process(delta):
 func _physics_process(delta):
 	pass
 
+func _on_game_over():
+	get_tree().paused = true
 
 func generate_interval():
 	interval = randf_range(min_interval, max_interval)
