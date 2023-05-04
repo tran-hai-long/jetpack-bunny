@@ -21,8 +21,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ay08o"]
-radius = 60.0
-height = 210.0
+radius = 30.0
+height = 106.0
 
 [node name="Player" type="RigidBody2D"]
 max_contacts_reported = 1
@@ -31,18 +31,21 @@ script = ExtResource("1_elxe5")
 metadata/_edit_group_ = true
 
 [node name="JetpackSprite" type="Sprite2D" parent="."]
-position = Vector2(-55, 15)
-scale = Vector2(0.650376, 0.650376)
+position = Vector2(1, 61)
+scale = Vector2(0.256579, 0.256579)
 texture = ExtResource("1_5jai6")
 
 [node name="FlameSprite" type="Sprite2D" parent="."]
-position = Vector2(-81, 95)
-scale = Vector2(0.65, 0.65)
+position = Vector2(-9.77031, 90.4943)
+scale = Vector2(0.183918, 0.202865)
 texture = ExtResource("4_vqry4")
 
 [node name="BunnySprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(30, 51.75)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_8ur5k")
 animation = &"run"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
+position = Vector2(30, 52)
 shape = SubResource("CapsuleShape2D_ay08o")

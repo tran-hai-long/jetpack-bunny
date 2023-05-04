@@ -72,7 +72,7 @@ region_enabled = true
 region_rect = Rect2(0, 0, 2000, 60)
 
 [node name="Player" parent="." instance=ExtResource("2_3p5ja")]
-position = Vector2(393, 185)
+position = Vector2(145, 490)
 
 [node name="Ceiling" type="StaticBody2D" parent="."]
 position = Vector2(640, 0)
