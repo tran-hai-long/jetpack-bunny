@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var fly_speed = -1500
+@export var fly_speed = -1500
 var flying = false
 var ceiling_overlapping_bodies
 # Called when the node enters the scene tree for the first time.
