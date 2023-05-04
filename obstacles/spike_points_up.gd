@@ -10,10 +10,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += Vector2(-500, 0) * delta
-	if position.x < (0 - $SpikePointsUpSprite.get_rect().size.x  * 2):
-		queue_free()
 	overlapping_bodies = get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.name == "Player":
 			game_over.emit()
+			
+
+func _physics_process(delta):
+	position += Vector2(-500, 0) * delta
+	if position.x < (0 - $SpikePointsUpSprite.get_rect().size.x  * 2):
+		queue_free()
