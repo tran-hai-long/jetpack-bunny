@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://b4p3apgdwb0es"]
+[gd_scene load_steps=3 format=3 uid="uid://b4p3apgdwb0es"]
 
+[ext_resource type="Script" path="res://obstacles/standing_enemy.gd" id="1_lkx36"]
 [ext_resource type="Texture2D" uid="uid://e3565lte8dhd" path="res://assets/sprites/obstacles/standing_enemy.png" id="1_tvvb6"]
 
 [node name="StandingEnemy" type="Area2D" groups=["obstacles"]]
+script = ExtResource("1_lkx36")
 metadata/_edit_group_ = true
 
 [node name="StandingEnemySprite" type="Sprite2D" parent="."]
+position = Vector2(46, 78)
 texture = ExtResource("1_tvvb6")
 
 [node name="StandingEnemyCollision" type="CollisionPolygon2D" parent="."]
+position = Vector2(46, 78)
 polygon = PackedVector2Array(-3, -77, -16, -27, -25, -27, -27, -13, -46, 10, -45, 62, -20, 62, -20, 77, 23, 78, 25, 73, 16, 65, 16, 62, 45, 62, 45, 15, 38, -2, 27, -13, 26, -24, 23, -27, 17, -27, 3, -78)

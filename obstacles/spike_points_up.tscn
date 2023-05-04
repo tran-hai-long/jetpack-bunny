@@ -1,12 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmxouir7xqyx5"]
+[gd_scene load_steps=3 format=3 uid="uid://dmxouir7xqyx5"]
 
+[ext_resource type="Script" path="res://obstacles/spike_points_up.gd" id="1_8p01h"]
 [ext_resource type="Texture2D" uid="uid://bqyjyfwx0vtfj" path="res://assets/sprites/obstacles/spike_points_up.png" id="1_ja0qq"]
 
 [node name="SpikePointsUp" type="Area2D" groups=["obstacles"]]
+script = ExtResource("1_8p01h")
 metadata/_edit_group_ = true
 
 [node name="SpikePointsUpSprite" type="Sprite2D" parent="."]
+position = Vector2(26, 44)
 texture = ExtResource("1_ja0qq")
 
 [node name="SpikePointsUpCollision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-3, -44, -26, 44, 26, 43, 3, -44)
+position = Vector2(26, 45)
+polygon = PackedVector2Array(-3, -44, -25, 43, 26, 43, 3, -44)
