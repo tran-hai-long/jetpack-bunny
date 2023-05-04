@@ -23,20 +23,23 @@ func _process(delta):
 	interval -= delta
 	if interval <= 0:
 		generate_interval()
+		var obstacle_scale = randf_range(0.5, 2)
 		var random_float = randf()
 		if random_float < 0.6:
 			obstacle = flying_enemy_scene.instantiate()
-			obstacle.position.y = randi_range($Ceiling.position.y, $Floor.position.y - obstacle.get_node("FlyingEnemySprite").get_rect().size.y)
+			obstacle.position.y = randi_range($Ceiling.position.y, $Floor.position.y - obstacle.get_node("FlyingEnemySprite").get_rect().size.y * obstacle_scale)
 		elif random_float < 0.8:
 			obstacle = spike_down_scene.instantiate()
 			obstacle.position.y = $Ceiling.position.y
 		elif random_float < 0.9:
 			obstacle = spike_up_scene.instantiate()
-			obstacle.position.y = $Floor.position.y - obstacle.get_node("SpikePointsUpSprite").get_rect().size.y
+			obstacle.position.y = $Floor.position.y - obstacle.get_node("SpikePointsUpSprite").get_rect().size.y * obstacle_scale
 		else:
 			obstacle = standing_enemy_scene.instantiate()
-			obstacle.position.y = $Floor.position.y - obstacle.get_node("StandingEnemySprite").get_rect().size.y
+			obstacle.position.y = $Floor.position.y - obstacle.get_node("StandingEnemySprite").get_rect().size.y * obstacle_scale
 		obstacle.position.x = screen_size.x
+		obstacle.scale.x = obstacle_scale
+		obstacle.scale.y = obstacle_scale
 		add_child(obstacle)
 		obstacle.game_over.connect(_on_game_over)
 		#calculate_max_distance()
