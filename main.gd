@@ -28,11 +28,14 @@ func _process(delta):
 			obstacle = flying_enemy_scene.instantiate()
 			obstacle.position.y = randi_range($Ceiling.position.y, $Floor.position.y - obstacle.get_node("FlyingEnemySprite").get_rect().size.y)
 		elif random_float < 0.8:
+			obstacle = spike_down_scene.instantiate()
+			obstacle.position.y = $Ceiling.position.y
+		elif random_float < 0.9:
 			obstacle = spike_up_scene.instantiate()
 			obstacle.position.y = $Floor.position.y - obstacle.get_node("SpikePointsUpSprite").get_rect().size.y
 		else:
-			obstacle = spike_down_scene.instantiate()
-			obstacle.position.y = $Ceiling.position.y
+			obstacle = standing_enemy_scene.instantiate()
+			obstacle.position.y = $Floor.position.y - obstacle.get_node("StandingEnemySprite").get_rect().size.y
 		obstacle.position.x = screen_size.x
 		add_child(obstacle)
 		obstacle.game_over.connect(_on_game_over)
