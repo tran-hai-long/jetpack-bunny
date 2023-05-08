@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://player.gd" id="1_elxe5"]
 [ext_resource type="Texture2D" uid="uid://dn0wxg01awndn" path="res://assets/sprites/player/bunny_still.png" id="2_khhm1"]
 [ext_resource type="Texture2D" uid="uid://bqftudssy1gum" path="res://assets/sprites/player/bunny_walk.png" id="3_vy26c"]
-[ext_resource type="Texture2D" uid="uid://xi6jbqq7skl1" path="res://assets/sprites/particles/fire_01.png" id="5_6hhp8"]
+[ext_resource type="Texture2D" uid="uid://cj4alw78q0kbv" path="res://assets/sprites/particles/yellow_particle.png" id="5_3wg33"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ur5k"]
 animations = [{
@@ -48,11 +48,10 @@ shape = SubResource("CapsuleShape2D_ay08o")
 [node name="JetpackParticles" type="CPUParticles2D" parent="."]
 position = Vector2(-10, 87)
 amount = 128
-texture = ExtResource("5_6hhp8")
+texture = ExtResource("5_3wg33")
 direction = Vector2(0, 1)
 spread = 90.0
 initial_velocity_min = 50.0
 initial_velocity_max = 100.0
-scale_amount_min = 0.02
-scale_amount_max = 0.05
-color = Color(1, 0.796875, 0, 1)
+scale_amount_min = 0.2
+scale_amount_max = 0.4
