@@ -4,11 +4,11 @@ var screen_size
 var min_interval = 0.5
 var max_interval = 2
 var interval = 0.75
-var obstacle
 var flying_enemy_scene = load("res://obstacles/flying_enemy.tscn")
 var standing_enemy_scene = load("res://obstacles/standing_enemy.tscn")
 var spike_up_scene = load("res://obstacles/spike_points_up.tscn")
 var spike_down_scene = load("res://obstacles/spike_points_down.tscn")
+var coin_scene = load("res://items/coin.tscn")
 var score = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -24,23 +24,21 @@ func _process(delta):
 	interval -= delta
 	if interval <= 0:
 		generate_interval()
-		generate_obstacle()
+		var random_float = randf()
+		if random_float < 0.8:
+			generate_obstacle()
+		else:
+			generate_coin()
 
 
 func _physics_process(delta):
 	pass
 
-func _on_game_over():
-	var leftover_obstacles = get_tree().get_nodes_in_group("obstacles")
-	for item in leftover_obstacles:
-		item.queue_free()
-	get_tree().paused = true
-	$HUD/StartButton.show()
-
 func generate_interval():
 	interval = randf_range(min_interval, max_interval)
 
 func generate_obstacle():
+	var obstacle
 	var obstacle_scale = randf_range(0.5, 2)
 	var random_float = randf()
 	if random_float < 0.6:
@@ -60,6 +58,26 @@ func generate_obstacle():
 	obstacle.scale.y = obstacle_scale
 	add_child(obstacle)
 	obstacle.game_over.connect(_on_game_over)
+
+
+func generate_coin():
+	var coin = coin_scene.instantiate()
+	coin.position.y = randi_range($Ceiling.position.y, $Floor.position.y - coin.get_node("CoinCollision").shape.radius * 2)
+	coin.position.x = screen_size.x
+	add_child(coin)
+	coin.get_coin.connect(_on_get_coin)
+
+
+func _on_game_over():
+	var leftover_obstacles = get_tree().get_nodes_in_group("obstacles")
+	for item in leftover_obstacles:
+		item.queue_free()
+	get_tree().paused = true
+	$HUD/StartButton.show()
+
+
+func _on_get_coin():
+	score += 1000
 
 
 func _on_score_timer_timeout():
