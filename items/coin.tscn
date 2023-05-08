@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvusa2woxiaq7"]
+
+[ext_resource type="Texture2D" uid="uid://b2xjl7utl82nv" path="res://assets/sprites/items/gold_1.png" id="1_dr6c2"]
+[ext_resource type="Texture2D" uid="uid://dm8c2ne14ad2b" path="res://assets/sprites/items/gold_2.png" id="2_gpxj8"]
+[ext_resource type="Texture2D" uid="uid://ovrp14s76bdc" path="res://assets/sprites/items/gold_3.png" id="3_bhnch"]
+[ext_resource type="Texture2D" uid="uid://dveudj6sr3100" path="res://assets/sprites/items/gold_4.png" id="4_kr32u"]
+[ext_resource type="Texture2D" uid="uid://008bschuk84u" path="res://assets/sprites/items/gold_5.png" id="5_fjigr"]
+[ext_resource type="Texture2D" uid="uid://dwx4at1nfsrm" path="res://assets/sprites/items/gold_6.png" id="6_tgqax"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ch2nu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dr6c2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_gpxj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bhnch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kr32u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fjigr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_tgqax")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gvvs2"]
+radius = 42.4382
+
+[node name="Coin" type="Area2D"]
+metadata/_edit_group_ = true
+
+[node name="CoinAnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ch2nu")
+
+[node name="CoinCollision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gvvs2")
