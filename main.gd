@@ -4,6 +4,8 @@ var screen_size
 var min_interval = 0.5
 var max_interval = 1.5
 var interval = 0.75
+var speed = -400
+var difficulty_scale = 1
 var flying_enemy_scene = load("res://obstacles/flying_enemy.tscn")
 var standing_enemy_scene = load("res://obstacles/standing_enemy.tscn")
 var spike_up_scene = load("res://obstacles/spike_points_up.tscn")
@@ -35,7 +37,7 @@ func _physics_process(delta):
 	pass
 
 func generate_interval():
-	interval = randf_range(min_interval, max_interval)
+	interval = randf_range(min_interval, max_interval) / difficulty_scale
 
 func generate_obstacle():
 	var obstacle
@@ -56,6 +58,7 @@ func generate_obstacle():
 	obstacle.position.x = screen_size.x
 	obstacle.scale.x = obstacle_scale
 	obstacle.scale.y = obstacle_scale
+	obstacle.speed = speed * difficulty_scale
 	add_child(obstacle)
 	obstacle.game_over.connect(_on_game_over)
 
@@ -64,6 +67,7 @@ func generate_coin():
 	var coin = coin_scene.instantiate()
 	coin.position.y = randi_range($Ceiling.position.y, $Floor.position.y - coin.get_node("CoinCollision").shape.radius * 2)
 	coin.position.x = screen_size.x
+	coin.speed = speed * difficulty_scale
 	add_child(coin)
 	coin.get_coin.connect(_on_get_coin)
 
@@ -71,6 +75,9 @@ func generate_coin():
 func _on_game_over():
 	var leftover_obstacles = get_tree().get_nodes_in_group("obstacles")
 	for item in leftover_obstacles:
+		item.queue_free()
+	var leftover_items = get_tree().get_nodes_in_group("items")
+	for item in leftover_items:
 		item.queue_free()
 	get_tree().paused = true
 	$HUD/StartButton.show()
@@ -87,7 +94,15 @@ func _on_score_timer_timeout():
 func _on_start_button_pressed():
 	get_tree().paused = false
 	score = 0
+	$Floor/FloorBackground.speed = speed
+	difficulty_scale = 1
 	$HUD/ScoreTimer.start()
+	$HUD/DifficultyTimer.start()
 	$HUD/StartButton.hide()
 	$HUD/GameTitle.hide()
 	$HUD/Score.show()
+
+
+func _on_difficulty_timer_timeout():
+	difficulty_scale *= 1.1
+	difficulty_scale = clamp(difficulty_scale, 1, 3)

@@ -1,5 +1,5 @@
 extends ParallaxBackground
-
+var speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,6 +11,6 @@ func _process(delta):
 	pass
 	
 func _physics_process(delta):
-	scroll_offset += Vector2(-400, 0) * delta
+	scroll_offset += Vector2(speed, 0) * delta
 	if scroll_offset.x <= -256:
 		scroll_offset = Vector2(0, 0)

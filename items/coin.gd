@@ -2,6 +2,7 @@ extends Area2D
 
 signal get_coin
 var overlapping_bodies
+var speed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +19,6 @@ func _process(delta):
 			
 
 func _physics_process(delta):
-	position += Vector2(-500, 0) * delta
+	position += Vector2(speed, 0) * delta
 	if position.x < (0 - $CoinCollision.shape.radius * 4):
 		queue_free()
