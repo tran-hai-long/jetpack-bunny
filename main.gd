@@ -2,7 +2,7 @@ extends Node2D
 
 var screen_size
 var min_interval = 0.5
-var max_interval = 2
+var max_interval = 1.5
 var interval = 0.75
 var flying_enemy_scene = load("res://obstacles/flying_enemy.tscn")
 var standing_enemy_scene = load("res://obstacles/standing_enemy.tscn")
@@ -39,7 +39,7 @@ func generate_interval():
 
 func generate_obstacle():
 	var obstacle
-	var obstacle_scale = randf_range(0.75, 1.5)
+	var obstacle_scale = randf_range(0.5, 2)
 	var random_float = randf()
 	if random_float < 0.6:
 		obstacle = flying_enemy_scene.instantiate()
