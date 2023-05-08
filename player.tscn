@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c86nx8wi22g1u"]
+[gd_scene load_steps=7 format=3 uid="uid://c86nx8wi22g1u"]
 
 [ext_resource type="Texture2D" uid="uid://bjxq2488gf670" path="res://assets/sprites/player/jetpack.png" id="1_5jai6"]
 [ext_resource type="Script" path="res://player.gd" id="1_elxe5"]
 [ext_resource type="Texture2D" uid="uid://dn0wxg01awndn" path="res://assets/sprites/player/bunny_still.png" id="2_khhm1"]
 [ext_resource type="Texture2D" uid="uid://bqftudssy1gum" path="res://assets/sprites/player/bunny_walk.png" id="3_vy26c"]
-[ext_resource type="Texture2D" uid="uid://ev6h0toohpfa" path="res://assets/sprites/player/flame.png" id="4_vqry4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8ur5k"]
 animations = [{
@@ -35,11 +34,6 @@ position = Vector2(1, 61)
 scale = Vector2(0.256579, 0.256579)
 texture = ExtResource("1_5jai6")
 
-[node name="FlameSprite" type="Sprite2D" parent="."]
-position = Vector2(-9.77031, 90.4943)
-scale = Vector2(0.183918, 0.202865)
-texture = ExtResource("4_vqry4")
-
 [node name="BunnySprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(30, 51.75)
 scale = Vector2(0.5, 0.5)
@@ -49,3 +43,11 @@ animation = &"run"
 [node name="PlayerCollision" type="CollisionShape2D" parent="."]
 position = Vector2(30, 52)
 shape = SubResource("CapsuleShape2D_ay08o")
+
+[node name="JetpackParticles" type="CPUParticles2D" parent="."]
+position = Vector2(-10, 83)
+amount = 32
+direction = Vector2(0, 1)
+spread = 90.0
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
