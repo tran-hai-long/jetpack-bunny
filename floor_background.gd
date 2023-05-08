@@ -12,5 +12,5 @@ func _process(delta):
 	
 func _physics_process(delta):
 	scroll_offset += Vector2(-400, 0) * delta
-	if scroll_offset.x <= -64:
+	if scroll_offset.x <= -256:
 		scroll_offset = Vector2(0, 0)
