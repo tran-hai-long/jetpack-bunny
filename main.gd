@@ -22,7 +22,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	score += roundi(delta * 100)
 	interval -= delta
 	if interval <= 0:
 		generate_interval()
@@ -84,10 +83,11 @@ func _on_game_over():
 
 
 func _on_get_coin():
-	score += 1000
+	score += 200
 
 
 func _on_score_timer_timeout():
+	score += 1
 	$HUD/Score.text = "Score: " + str(score)
 
 

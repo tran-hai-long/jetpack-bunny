@@ -98,7 +98,7 @@ theme_override_font_sizes/font_size = 40
 text = "Score: 0"
 
 [node name="ScoreTimer" type="Timer" parent="HUD"]
-wait_time = 0.2
+wait_time = 0.1
 
 [node name="StartButton" type="Button" parent="HUD"]
 process_mode = 3
