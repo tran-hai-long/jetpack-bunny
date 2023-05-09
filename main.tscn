@@ -97,9 +97,6 @@ offset_bottom = 65.0
 theme_override_font_sizes/font_size = 40
 text = "Score: 0"
 
-[node name="ScoreTimer" type="Timer" parent="HUD"]
-wait_time = 0.1
-
 [node name="StartButton" type="Button" parent="HUD"]
 process_mode = 3
 anchors_preset = 8
@@ -130,12 +127,21 @@ text = "Jetpack Bunny"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DifficultyTimer" type="Timer" parent="HUD"]
+[node name="Timer" type="Node2D" parent="."]
+
+[node name="ScoreTimer" type="Timer" parent="Timer"]
+wait_time = 0.1
+
+[node name="DifficultyTimer" type="Timer" parent="Timer"]
 wait_time = 30.0
+
+[node name="SpawnTimer" type="Timer" parent="Timer"]
+wait_time = 0.75
 
 [connection signal="body_entered" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_entered"]
 [connection signal="body_exited" from="Floor/FloorArea" to="Player" method="_on_floor_area_body_exited"]
 [connection signal="player_collided" from="Ceiling/CeilingArea" to="Player" method="_on_ceiling_area_player_collided"]
-[connection signal="timeout" from="HUD/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="pressed" from="HUD/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="timeout" from="HUD/DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
+[connection signal="timeout" from="Timer/DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
+[connection signal="timeout" from="Timer/SpawnTimer" to="." method="_on_spawn_timer_timeout"]

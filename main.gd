@@ -22,21 +22,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	interval -= delta
-	if interval <= 0:
-		generate_interval()
-		var random_float = randf()
-		if random_float < 0.8:
-			generate_obstacle()
-		else:
-			generate_coin()
+	pass
 
 
 func _physics_process(delta):
 	pass
 
-func generate_interval():
-	interval = randf_range(min_interval, max_interval) / difficulty_scale
 
 func generate_obstacle():
 	var obstacle
@@ -83,7 +74,7 @@ func _on_game_over():
 
 
 func _on_get_coin():
-	score += 200
+	score += 100
 
 
 func _on_score_timer_timeout():
@@ -96,8 +87,9 @@ func _on_start_button_pressed():
 	score = 0
 	$Floor/FloorBackground.speed = speed
 	difficulty_scale = 1
-	$HUD/ScoreTimer.start()
-	$HUD/DifficultyTimer.start()
+	$Timer/ScoreTimer.start()
+	$Timer/DifficultyTimer.start()
+	$Timer/SpawnTimer.start()
 	$HUD/StartButton.hide()
 	$HUD/GameTitle.hide()
 	$HUD/Score.show()
@@ -106,3 +98,12 @@ func _on_start_button_pressed():
 func _on_difficulty_timer_timeout():
 	difficulty_scale *= 1.1
 	difficulty_scale = clamp(difficulty_scale, 1, 3)
+
+
+func _on_spawn_timer_timeout():
+	$Timer/SpawnTimer.wait_time = randf_range(min_interval, max_interval) / difficulty_scale
+	var random_float = randf()
+	if random_float < 0.8:
+		generate_obstacle()
+	else:
+		generate_coin()
