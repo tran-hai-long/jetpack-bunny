@@ -1,8 +1,9 @@
 extends Area2D
 
+
 signal game_over
-var overlapping_bodies
 var speed
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,11 +12,11 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	overlapping_bodies = get_overlapping_bodies()
+	var overlapping_bodies = get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.name == "Player":
 			game_over.emit()
-			
+
 
 func _physics_process(delta):
 	position += Vector2(speed, 0) * delta

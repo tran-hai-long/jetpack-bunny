@@ -1,13 +1,15 @@
 extends RigidBody2D
 
+
 @export var fly_speed = -1500
-var ceiling_overlapping_bodies
-var state = STATE_FALLING
 enum {
 	STATE_RUNNING,
 	STATE_FLYING,
 	STATE_FALLING
 }
+var state = STATE_FALLING
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$BunnySprite.stop()

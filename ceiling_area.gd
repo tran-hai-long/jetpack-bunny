@@ -1,7 +1,8 @@
 extends Area2D
 
-var overlapping_bodies
+
 signal player_collided
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	overlapping_bodies = get_overlapping_bodies()
+	var overlapping_bodies = get_overlapping_bodies()
 	for body in overlapping_bodies:
 		if body.name == "Player":
 			player_collided.emit()
