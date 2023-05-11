@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c77yno2kcxgn7"]
+[gd_scene load_steps=13 format=3 uid="uid://c77yno2kcxgn7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gfx0i"]
 [ext_resource type="PackedScene" uid="uid://c86nx8wi22g1u" path="res://player.tscn" id="2_3p5ja"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://4djb28oq566f" path="res://assets/backgrounds/ground_yellow.png" id="6_grkfx"]
 [ext_resource type="Script" path="res://ceiling_area.gd" id="8_6kwyd"]
 [ext_resource type="Texture2D" uid="uid://in4vk1jaxknt" path="res://assets/ui/pause.png" id="9_32v5i"]
+[ext_resource type="Texture2D" uid="uid://cjrosgkthdrpe" path="res://assets/ui/back.png" id="9_416ei"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2xnh"]
 size = Vector2(1286, 59.25)
@@ -169,11 +170,11 @@ visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -56.0
-offset_right = 124.0
+offset_top = -58.0
+offset_right = 58.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 24
-text = "Back"
+icon = ExtResource("9_416ei")
 
 [node name="PauseButton" type="Button" parent="HUD"]
 process_mode = 3
