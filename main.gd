@@ -69,6 +69,7 @@ func _on_game_over():
 	var leftover_items = get_tree().get_nodes_in_group("items")
 	for item in leftover_items:
 		item.queue_free()
+	$Player.hide()
 	get_tree().paused = true
 	$HUD/StartButton.show()
 
@@ -91,8 +92,9 @@ func _on_start_button_pressed():
 	$Timer/DifficultyTimer.start()
 	$Timer/SpawnTimer.start()
 	$HUD/StartButton.hide()
-	$HUD/GameTitle.hide()
+	$HUD/Heading.hide()
 	$HUD/Score.show()
+	$Player.show()
 
 
 func _on_difficulty_timer_timeout():
