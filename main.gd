@@ -72,6 +72,7 @@ func _on_game_over():
 	$Player.hide()
 	get_tree().paused = true
 	$HUD/StartButton.show()
+	$HUD/HighScoreButton.show()
 
 
 func _on_get_coin():
@@ -92,6 +93,7 @@ func _on_start_button_pressed():
 	$Timer/DifficultyTimer.start()
 	$Timer/SpawnTimer.start()
 	$HUD/StartButton.hide()
+	$HUD/HighScoreButton.hide()
 	$HUD/Heading.hide()
 	$HUD/Score.show()
 	$Player.show()
@@ -109,3 +111,17 @@ func _on_spawn_timer_timeout():
 		generate_obstacle()
 	else:
 		generate_coin()
+
+
+func _on_high_score_button_pressed():
+	$HUD/HighScoreList.show()
+	$HUD/StartButton.hide()
+	$HUD/HighScoreButton.hide()
+	$HUD/BackButton.show()
+
+
+func _on_back_button_pressed():
+	$HUD/HighScoreList.hide()
+	$HUD/StartButton.show()
+	$HUD/HighScoreButton.show()
+	$HUD/BackButton.hide()
