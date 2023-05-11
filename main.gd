@@ -16,7 +16,6 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	$HUD/Score.hide()
 	get_tree().paused = true
 
 
@@ -73,6 +72,7 @@ func _on_game_over():
 	get_tree().paused = true
 	$HUD/StartButton.show()
 	$HUD/HighScoreButton.show()
+	$HUD/PauseButton.hide()
 
 
 func _on_get_coin():
@@ -94,6 +94,7 @@ func _on_start_button_pressed():
 	$Timer/SpawnTimer.start()
 	$HUD/StartButton.hide()
 	$HUD/HighScoreButton.hide()
+	$HUD/PauseButton.show()
 	$HUD/Heading.hide()
 	$HUD/Score.show()
 	$Player.show()
@@ -125,3 +126,7 @@ func _on_back_button_pressed():
 	$HUD/StartButton.show()
 	$HUD/HighScoreButton.show()
 	$HUD/BackButton.hide()
+
+
+func _on_pause_button_pressed():
+	get_tree().paused = not get_tree().paused

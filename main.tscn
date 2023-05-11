@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c77yno2kcxgn7"]
+[gd_scene load_steps=12 format=3 uid="uid://c77yno2kcxgn7"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_gfx0i"]
 [ext_resource type="PackedScene" uid="uid://c86nx8wi22g1u" path="res://player.tscn" id="2_3p5ja"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cykkxmuvgvw5s" path="res://assets/backgrounds/bg_layer4.png" id="4_1i733"]
 [ext_resource type="Texture2D" uid="uid://4djb28oq566f" path="res://assets/backgrounds/ground_yellow.png" id="6_grkfx"]
 [ext_resource type="Script" path="res://ceiling_area.gd" id="8_6kwyd"]
+[ext_resource type="Texture2D" uid="uid://in4vk1jaxknt" path="res://assets/ui/pause.png" id="9_32v5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2xnh"]
 size = Vector2(1286, 59.25)
@@ -145,6 +146,7 @@ theme_override_font_sizes/font_size = 32
 text = "High Scores"
 
 [node name="HighScoreList" type="RichTextLabel" parent="HUD"]
+process_mode = 3
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,6 +175,17 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "Back"
 
+[node name="PauseButton" type="Button" parent="HUD"]
+process_mode = 3
+visible = false
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_bottom = 44.0
+grow_horizontal = 0
+icon = ExtResource("9_32v5i")
+
 [node name="Timer" type="Node2D" parent="."]
 
 [node name="ScoreTimer" type="Timer" parent="Timer"]
@@ -190,6 +203,7 @@ wait_time = 0.75
 [connection signal="pressed" from="HUD/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="HUD/HighScoreButton" to="." method="_on_high_score_button_pressed"]
 [connection signal="pressed" from="HUD/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="HUD/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="Timer/ScoreTimer" to="." method="_on_score_timer_timeout"]
 [connection signal="timeout" from="Timer/DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
 [connection signal="timeout" from="Timer/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
