@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://de7cb7e1quhv4"]
+
+[ext_resource type="Texture2D" uid="uid://bjdtvhqbujgho" path="res://assets/ui/warning.png" id="1_qgcft"]
+[ext_resource type="Script" path="res://obstacles/warning.gd" id="2_yv3tu"]
+
+[node name="Warning" type="Sprite2D"]
+position = Vector2(25, 25)
+texture = ExtResource("1_qgcft")
+script = ExtResource("2_yv3tu")
+metadata/_edit_group_ = true
+
+[node name="BlinkingTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[connection signal="timeout" from="BlinkingTimer" to="." method="_on_blinking_timer_timeout"]

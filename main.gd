@@ -3,9 +3,11 @@ extends Node2D
 
 var flying_enemy_scene = load("res://obstacles/flying_enemy.tscn")
 var standing_enemy_scene = load("res://obstacles/standing_enemy.tscn")
+var fast_enemy_scene = load("res://obstacles/fast_enemy.tscn")
 var spike_up_scene = load("res://obstacles/spike_points_up.tscn")
 var spike_down_scene = load("res://obstacles/spike_points_down.tscn")
 var coin_scene = load("res://items/coin.tscn")
+var warning_scene = load("res://obstacles/warning.tscn")
 
 var screen_size
 var min_interval = 0.5
@@ -79,8 +81,10 @@ func _on_difficulty_timer_timeout():
 func _on_spawn_timer_timeout():
 	$Timer/SpawnTimer.wait_time = randf_range(min_interval, max_interval) / difficulty_scale
 	var random_float = randf()
-	if random_float < 0.8:
+	if random_float < 0.7:
 		generate_obstacle()
+	elif random_float < 0.8:
+		generate_fast_obstacle()
 	else:
 		generate_coin()
 
@@ -134,6 +138,23 @@ func generate_obstacle():
 	obstacle.speed = speed * difficulty_scale
 	add_child(obstacle)
 	obstacle.game_over.connect(_on_game_over)
+
+
+func generate_fast_obstacle():
+	var warning = warning_scene.instantiate()
+	var position_y = randi_range($Ceiling.position.y, $Floor.position.y - warning.get_rect().size.y)
+	warning.position.y = position_y
+	warning.position.x = screen_size.x - warning.get_rect().size.x
+	add_child(warning)
+	await get_tree().create_timer(2.0).timeout
+	warning.queue_free()
+	var obstacle = fast_enemy_scene.instantiate()
+	obstacle.position.y = position_y
+	obstacle.position.x = screen_size.x
+	obstacle.speed = speed * 2 * difficulty_scale
+	add_child(obstacle)
+	obstacle.game_over.connect(_on_game_over)
+
 
 
 func generate_coin():

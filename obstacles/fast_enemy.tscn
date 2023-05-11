@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://10uboy5o7bmp"]
+
+[ext_resource type="Texture2D" uid="uid://bkmyotcptdpn3" path="res://assets/sprites/obstacles/fast_enemy.png" id="1_e1824"]
+[ext_resource type="Script" path="res://obstacles/fast_enemy.gd" id="1_p0b13"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l464q"]
+size = Vector2(72, 56)
+
+[node name="FastEnemy" type="Area2D" groups=["obstacles"]]
+script = ExtResource("1_p0b13")
+metadata/_edit_group_ = true
+
+[node name="FastEnemySprite" type="Sprite2D" parent="."]
+position = Vector2(36, 28)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_e1824")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(36, 28)
+shape = SubResource("RectangleShape2D_l464q")
