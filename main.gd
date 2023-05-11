@@ -12,6 +12,7 @@ var spike_up_scene = load("res://obstacles/spike_points_up.tscn")
 var spike_down_scene = load("res://obstacles/spike_points_down.tscn")
 var coin_scene = load("res://items/coin.tscn")
 var score = 0
+var high_score_list = load_high_scores()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,6 +63,10 @@ func generate_coin():
 
 
 func _on_game_over():
+	if len(high_score_list) < 10 or score > high_score_list[-1]:
+		high_score_list.append(score)
+		high_score_list.sort_custom(sort_descending)
+		update_high_scores()
 	var leftover_obstacles = get_tree().get_nodes_in_group("obstacles")
 	for item in leftover_obstacles:
 		item.queue_free()
@@ -115,6 +120,15 @@ func _on_spawn_timer_timeout():
 
 
 func _on_high_score_button_pressed():
+	if not high_score_list.is_empty():
+		$HUD/HighScoreList.clear()
+		var count = 0
+		for score in high_score_list:
+			$HUD/HighScoreList.append_text(str(score))
+			$HUD/HighScoreList.append_text("\n")
+			count += 1
+			if count >= 10:
+				break
 	$HUD/HighScoreList.show()
 	$HUD/StartButton.hide()
 	$HUD/HighScoreButton.hide()
@@ -130,3 +144,29 @@ func _on_back_button_pressed():
 
 func _on_pause_button_pressed():
 	get_tree().paused = not get_tree().paused
+
+
+func load_high_scores():
+	var high_score_list = []
+	if  FileAccess.file_exists("user://savegame.save"):
+		var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
+		while save_game.get_position() < save_game.get_length():
+			high_score_list.append(int(save_game.get_line()))
+	return high_score_list
+
+
+func update_high_scores():
+	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var count = 0
+	for score in high_score_list:
+		save_game.store_line(str(score))
+		count += 1
+		if count >= 10:
+			break
+	
+
+
+func sort_descending(a, b):
+	if a > b:
+		return true
+	return false
