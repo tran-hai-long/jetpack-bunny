@@ -194,7 +194,7 @@ icon = ExtResource("9_32v5i")
 wait_time = 0.1
 
 [node name="DifficultyTimer" type="Timer" parent="Timer"]
-wait_time = 30.0
+wait_time = 15.0
 
 [node name="SpawnTimer" type="Timer" parent="Timer"]
 wait_time = 0.75
