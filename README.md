@@ -1,3 +1,7 @@
+> **Note**
+> 
+> Due to limited time, I can not work on this project anymore.
+
 # Jetpack Bunny
 
 Jetpack Joyride clone using Godot
